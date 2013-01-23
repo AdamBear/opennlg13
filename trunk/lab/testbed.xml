@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<regression>
+
+  <item numOfParses="1" string="Giovanni's rocks"/>
+  <item numOfParses="1" string="Giovanni's serves some cheap Italian food"/>
+
+  <item numOfParses="0" string="Giovanni's rocks some cheap Italian food"/>
+  <item numOfParses="0" string="Giovanni's serves"/>
+  <item numOfParses="0" string="Giovanni's serves cheap some food"/>
+  <item numOfParses="0" string="Giovanni's serves some food cheap"/>
+
+</regression>
+
