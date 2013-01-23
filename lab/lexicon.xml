@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ccg-lexicon name="lab-1">
+
+  <family name="proper-noun" pos="proper-noun">
+    <entry name="Primary">
+      <atomcat type="NP">
+	<fs>
+	  <feat attr="index">
+	    <lf>
+	      <nomvar name="X"/>
+	    </lf>
+	  </feat>
+          <!-- <feat attr="num" val="sg"/> -->
+	</fs>
+	<lf>
+	  <satop nomvar="X">
+	    <prop name="[*DEFAULT*]"/>
+	  </satop>
+	</lf>
+      </atomcat>
+    </entry>
+  </family>
+
+  <family name="common-noun" pos="common-noun">
+    <entry name="Primary">
+      <atomcat type="N">
+	<fs>
+	  <feat attr="index">
+	    <lf>
+	      <nomvar name="X"/>
+	    </lf>
+	  </feat>
+	</fs>
+	<lf>   
+	  <satop nomvar="X">
+	    <prop name="[*DEFAULT*]"/>
+	  </satop>
+	</lf>
+      </atomcat>
+    </entry>
+  </family>
+
+  <family name="intransitive-verb" pos="intransitive-verb">
+    <entry name="Primary">
+      <complexcat>
+	<atomcat type="S">
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="E"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat>
+        <slash dir="\"/>
+        <atomcat type="NP">
+	  <fs id="1">
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="X"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat>
+	<lf>
+	  <satop nomvar="E">
+	    <prop name="[*DEFAULT*]"/>
+	  </satop>
+	  <satop nomvar="E">
+	    <diamond mode="THEME">
+	      <nomvar name="X"/>
+	    </diamond>
+	  </satop>    
+	</lf>
+      </complexcat>
+    </entry>
+  </family>
+
+  <family name="transitive-verb" pos="transitive-verb">
+    <entry name="Primary">
+      <complexcat>
+	<atomcat type="S">
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="E"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat>
+        <slash dir="\"/>
+        <atomcat type="NP">
+	  <fs id="1">
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="X"/>
+	      </lf>
+	    </feat>
+	  </fs>	  
+	</atomcat>
+        <slash dir="/"/>
+        <atomcat type="NP">
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="Y"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat>
+	<lf>
+	  <satop nomvar="E">
+	    <prop name="[*DEFAULT*]"/>
+	  </satop>
+	  <satop nomvar="E">
+	    <diamond mode="AGENT">
+	      <nomvar name="X"/>
+	    </diamond>
+	  </satop>    
+	  <satop nomvar="E">
+	    <diamond mode="PATIENT">
+	      <nomvar name="Y"/>
+	    </diamond>
+	  </satop> 
+	</lf>
+      </complexcat>
+    </entry>
+  </family>
+
+  <family name="adjective" pos="adjective">
+    <entry name="Attributive">
+      <complexcat>
+	<atomcat type="N">
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="X"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat>
+        <slash dir="/"/>
+	<atomcat type="N">
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="X"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat>
+	<lf>
+	  <satop nomvar="X">
+	    <diamond mode="MOD">
+	      <nomvar name="P"/>
+	    </diamond>
+	  </satop>    
+	  <satop nomvar="P">
+	    <prop name="[*DEFAULT*]"/>
+	  </satop>
+	</lf>
+      </complexcat>
+    </entry>
+  </family>
+
+  <family name="determiner" pos="determiner" closed="true" indexRel="*NoSem*"> 
+    <entry name="Primary"> 
+      <complexcat> 
+	<atomcat type="NP">
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="X"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat>
+	<slash dir="/"/> 
+	<atomcat type="N"> 
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="X"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat> 
+      </complexcat> 
+    </entry> 
+    <member stem="some"/>
+  </family>
+
+
+
+  <!--
+  <family name="conjunction" pos="conjunction"> 
+    <entry name="NP"> 
+      <complexcat> 
+	<atomcat type="NP">
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="X"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat>
+	<slash dir="\"/> 
+	<atomcat type="NP"> 
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="Y"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat> 
+	<slash dir="/"/> 
+	<atomcat type="NP"> 
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="Z"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat> 
+	<lf>
+	  <satop nomvar="X">
+	    <prop name="[*DEFAULT*]"/>
+	  </satop>
+	  <satop nomvar="X">
+	    <diamond mode="CONJ">
+	      <nomvar name="Y"/>
+	    </diamond>
+	  </satop>    
+	  <satop nomvar="X">
+	    <diamond mode="CONJ">
+	      <nomvar name="Z"/>
+	    </diamond>
+	  </satop>  
+	</lf>
+      </complexcat> 
+    </entry> 
+  </family>
+  -->
+
+</ccg-lexicon>

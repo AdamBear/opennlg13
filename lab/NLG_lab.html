@@ -1,0 +1,415 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+  <head>
+    <title>NLG 2013 - Lab 1</title>
+  </head>
+
+  <body>
+
+    <h1>Running and editing OpenCCG grammars for generation</h1>
+
+    <h2>1. Downloading an OpenCCG grammar</h2>
+
+    <p>Create a directory in your home directory to keep all your code
+    for the NLG course. For example you could call it
+    <tt>nlg</tt>. From inside this directory, type the following
+    command into a terminal window:</p>
+
+    <pre>  
+      svn checkout http://opennlg13.googlecode.com/svn/trunk/lab lab
+    </pre>
+
+    <p>This should create a subdirectory called <tt>lab-1</tt>
+    containing five XML files. Move into this subdirectory and list
+    them to make sure.</p>
+
+
+    <h2>2. Setting the relevant environment variables</h2>
+
+    <p>Before you start, you will need to set three environment
+    variables, so that your machine knows where to find the OpenCCG
+    code. Type the following commands (carefully!) into your
+    shell:</p>
+
+    <pre>
+      export JAVA_HOME=/usr
+
+      export OPENCCG_HOME=/group/ltg/projects/lcontrib/lib/openccg
+
+      export PATH="$PATH:$OPENCCG_HOME/bin"
+    </pre>
+
+    <p>Note that these environment variables are local to the shell
+    you are currently working in, and will not persist. If you want,
+    and know how, you can add them to your <tt>.brc</tt> file.</p>
+
+
+    <h2>3. Running the grammar</h2>
+
+    <p>You are now ready to start using the grammar to parse and
+    generate sentences. Make sure you are inside the <tt>lab-1</tt>
+    directory, and start up the OpenCCG interactive interpreter as
+    follows:</p>
+
+    <pre>
+      tccg
+    </pre>
+
+    <p>You should see a statement telling you that grammar 'lab-1' has
+    successfully loaded, and you should also see the prompt
+    <tt>tccg></tt>, telling you that the interpreter is awaiting
+    input. If you type in a string of words, the grammar will attempt
+    to parse it. Type in the following strings and see what happens:</p>
+
+    <pre>
+      tccg> Giovanni's rocks
+
+      tccg> Giovanni's serves some cheap Italian food
+
+      tccg> Giovanni's rocks some cheap Italian food  
+    </pre>
+
+    <p>In each case, do you understand what the <tt>tccg</tt> output
+    is telling you?</p>
+
+    <p>We can get <tt>tccg</tt> to show us CCG derivations for
+    grammatical strings. Type the following into the <tt>tccg</tt>
+    interpreter:</p>
+
+    <pre>
+      tccg> :derivs
+
+      tccg> Giovanni's rocks
+
+      tccg> Giovanni's serves some cheap Italian food
+    </pre>
+
+    <p>Exercise - On a sheet of paper, write down the second
+    derivation that tccg shows you (i.e. for the input string
+    <tt>Giovanni's serves some cheap Italian food</tt>), in the
+    standard format we saw in the lectures, with the words along the
+    top, and the derivation building from top to bottom.</p>
+
+    <p>We can also get <tt>tccg</tt> to show us semantic
+    representations for grammatical strings, in the format of
+    hierarchical formulas of hybrid logic. Type the following into the
+    <tt>tccg</tt> interpreter:</p>
+
+    <pre>
+      tccg> :sem
+
+      tccg> Giovanni's rocks
+
+      tccg> Giovanni's serves some cheap Italian food
+    </pre>
+
+    <p>Exercise - Draw the graph which is described by the hybrid
+    logic representation of the second sentence.</p>
+
+    <p>Finally, we can also use the <tt>tccg</tt> interpreter to
+    "regenerate" from the semantic representation of the last sentence
+    parsed - the program will then apply the chart realisation
+    algorithm to find every strings which realises the input. Type the
+    following at the <tt>tccg></tt> prompt to see regeneration in
+    action:</p>
+
+    <pre>
+      tccg> Giovanni's rocks
+      
+      tccg> :r
+
+      tccg> Giovanni's serves some cheap Italian food
+
+      tccg> :r
+    </pre>
+
+    <p>How many realisations did you get in each case? Was this what
+    you expected?</p>
+
+
+    <h2>4. Examining the grammar source files</h2>
+
+    <p>As we said earlier, the OpenCCG grammar we are playing with
+    here consists of five XML files in the <tt>lab-1</tt>
+    directory. Of these files, the following two are particularly
+    important: <tt>morph.xml</tt> and <tt>lexicon.xml</tt>.</p>
+
+    <p>Open these two files in your favourite text editor, for example
+    in emacs. For the moment, just examine the files closely,
+    especially the way the lexical information is distributed across
+    the two files. Ignore any parts where the XML has been commented
+    out, i.e. bits between <tt>&lt;!--</tt> and <tt>--&gt;</tt>.</p>
+
+    <p>On a sheet of paper, write down the <tt>lab-1</tt> lexicon in
+    the traditional CCG format, i.e. as a list of words paired with
+    categories (including sets of EPs). As an example, your entry for
+    the verb "rocks" should look like this:</p>
+
+    <pre>
+      rocks :- Se\NPx : @e rock, @e &lt;THEME&gt; x
+    </pre>
+
+    <p>Pay particular attention to the family containing the category
+    information for the determiner "some". What is different about
+    this family from the others? Why do you think this is?</p>
+
+
+    <h2>5. Testbeds</h2>
+
+    <p>Now, open the <tt>testbed.xml</tt> file in your text editor and
+    have a quick look at the contents. This file contains a test suite
+    of two kinds of sentence:</p>
+
+    <ul>
+      <li>those we want to parse and generate (<tt>numOfParses="1"</tt>)</li>
+      <li>those we DON'T want to parse and generate (<tt>numOfParses="0"</tt>)</li>
+    </ul>
+
+    <p>Exit from the <tt>tccg</tt> interpreter (using <tt>:q</tt>) and
+    type the following into the shell:</p>
+
+    <pre>
+      ccg-test
+    </pre>
+
+    <p>When you do this, OpenCCG will attempt to parse every sentence
+    listed and then regenerate from the semantic representation. If
+    the result is "OK" in each case, then this means that it can parse
+    and generate all the ones we want it to, but none of the ones we
+    don't.</p>
+
+
+    <h2>6. Adding lexical entries</h2>
+
+    <p>As it stands, our grammar is somewhat limited. It can only talk
+    about just the one restaurant, Giovanni's, and can only make
+    statements about the overall quality of the restaurant itself, and
+    the price and nationality of the food. Your task in this exercise
+    is to extend the lexicon by adding the following to the
+    <tt>morph.xml</tt> file (you shouldn't need to touch the
+    <tt>lexicon.xml</tt> file yet):</p>
+
+    <ol>
+      <li>the names of two restaurants of your choice</li>
+      <li>two adjectives denoting nationalities</li>
+      <li>two adjectives denoting properties that can be predicated of the food served in restaurants</li>
+      <li>an adjective which means the same thing as "cheap" - make sure you set the stem attribute to "cheap" so that the realiser knows they are synonyms</li>
+      <li> the synonym for "food" of your choice and preferred level of formality (e.g. "fare", "nosh", "grub", ...)</li>
+    </ol>
+
+    <p>In each case, make sure the interpreter can parse and
+    regenerate from example sentences in the way you want and would
+    expect. To do this, you will need to keep reloading the grammar
+    each time you make an edit - do this by exiting <tt>tccg</tt>
+    using <tt>:q</tt> and then restarting the program. Add appropriate
+    sentences to the testbed file, including ungrammatical ones, and
+    test the grammar using <tt>ccg-test</tt>.</p>
+
+    <p>Finally, add entries to the <tt>morph.xml</tt> file, so that
+    you can parse and regenerate from "Giovanni's plays some funky
+    music". Again, add appropriate sentences to the testbed file, and
+    run <tt>ccg-test</tt>.</p>
+
+
+    <h2>7. Unary rules</h2>
+
+    <p>One of the ways in which OpenCCG extends the CCG formalism
+    proper is that OpenCCG allows us to define <b>arbitrary unary
+    rules</b>, in addition to the CCG rules of application, type
+    raising and composition.</p>
+
+    <p>Open up the file <tt>rules.xml</tt> in your text editor, and
+    uncomment the unary rule specified here. Take a close look at this
+    rule, and try and figure out what this rule does, and how it will
+    allow us to generate a wider range of sentences.</p>
+
+    <p>Reload the grammar. Type in the following at the prompt:</p>
+
+    <pre>
+      tccg> Giovanni's serves some cheap Italian food
+
+      tccg> :r
+    </pre>
+
+    <p>Do you notice anything different from before? Make the relevant
+    changes to the testbed file.</p>
+
+    <p>Can you think of any future problems this unary rule might give
+    us, if we keep extending our little grammar? How might we go about
+    solving these problems?</p>
+
+
+    <h2>8. NP conjunction</h2>
+
+    <p>In this part of the lab, we are going to see how we can get the
+    grammar to generate sentences with conjoined subject NPs,
+    i.e. sentences of the form "Giovanni's and Dario's rock" or
+    "Giovanni's and Dario's serve cheap food".</p>
+
+    <p>Add the restaurant name "Dario's" to
+    <tt>morph.xml</tt>. Uncomment both the lexical entry for the
+    conjunction "and" in <tt>morph.xml</tt>, as well as the lexical
+    family for conjunctions in <tt>lexicon.xml</tt>. On a sheet of
+    paper write out the lexical entry for "and" in the traditional
+    format, including semantic representation.</p>
+
+    <p>Reload the grammar, and try out the following in <tt>tccg</tt>:</p>
+
+    <pre>
+      tccg> Dario's and Giovanni's
+
+      tccg> :r
+    </pre>
+
+    <p>Is the result of regeneration what you would expect?</p>
+
+    <p>Now, uncomment the plural verb forms "rock" and "serve" in
+    <tt>morph.xml</tt>. Reload the grammar, and try out the
+    following:</p>
+
+    <pre>
+      tccg> Giovanni's and Dario's rock
+
+      tccg> Giovanni's and Dario's serve cheap Italian food
+    </pre>
+
+    <p>In each case, draw out the semantic graph described by the
+    hybrid logic formula.</p>
+
+    <p>Now let's try regeneration:</p>
+
+    <pre>
+      tccg> Giovanni's rocks
+
+      tccg> :r
+
+      tccg> Giovanni's and Dario's rock
+
+      tccg> :r
+
+      tccg> Dario's serves cheap Italian food
+
+      tccg> :r
+
+      tccg> Giovanni's and Dario's serve cheap Italian food
+
+      tccg> :r
+    </pre>
+
+    <p>Are you happy with the results of regeneration here? If not why not?</p>
+
+
+    <h2>9. Subject/verb agreement (1)</h2>
+
+    <p>Uncomment the two "macros" listed in the <tt>morph.xml</tt>
+    file. Add the appropriate one of the following attributes to the
+    lexical entries for the intransitive and transitive verb forms
+    "rock", "rocks", "serve" and "serves" (and why not "play" and
+    "plays" while you are at it):</p>
+
+    <pre>
+      macros="@singular"
+
+      macros="@plural"
+    </pre>
+
+    <p>Now reload the grammar and try out the following again to see if this
+    has solved our problem:</p>
+
+    <pre>
+      tccg> Giovanni's rocks
+
+      tccg> :r
+
+      tccg> Giovanni's and Dario's rock
+
+      tccg> :r
+
+      tccg> Dario's serves cheap Italian food
+
+      tccg> :r
+
+      tccg> Giovanni's and Dario's serve cheap Italian food
+
+      tccg> :r
+    </pre>
+
+    <p>Is this better?</p>
+
+    <p>To understand how the feature macros interact with the lexical
+    entries and families to create fully fleshed out lexical entries,
+    try the following:</p>
+
+    <pre>
+      tccg> :feats
+
+      tccg> rocks
+
+      tccg> rock
+
+      tccg> serves
+
+      tccg> serve
+    </pre>
+
+
+    <h2>10. Subject/verb agreement (2)</h2>
+
+    <p>Uncomment the <tt>feat</tt> element in the proper noun family
+    in <tt>lexicon.xml</tt>. What effect do you think that this will
+    have on the sentences generated by our grammar?</p>
+
+    <p>Reload the grammar and try out the following again to see if this
+    has solved our problem:</p>
+
+    <pre>
+      tccg> Giovanni's rocks
+
+      tccg> :r
+
+      tccg> Giovanni's and Dario's rock
+
+      tccg> :r
+
+      tccg> Dario's serves cheap Italian food
+
+      tccg> :r
+
+      tccg> Giovanni's and Dario's serve cheap Italian food
+
+      tccg> :r
+    </pre>
+
+    <p>Does this solve the problem? Is it at least better than before?</p>
+
+
+    <h2>11. Subject/verb agreement (3)</h2>
+
+    <p>Edit the lexical family for conjunction so as to get the right
+    generation results for the following tests:</p>
+
+    <pre>
+      tccg> Giovanni's and Dario's rock
+
+      tccg> :r
+
+      tccg> Giovanni's and Dario's serve cheap Italian food
+
+      tccg> :r
+    </pre>
+
+    <p>Finally, update the testbed file to reflect the final state of
+    your grammar, remembering to include ungrammatical examples
+    too.</p>
+
+
+    <h2>12. Coda</h2>
+
+    <p>If you finish early, play around with the grammar to try and
+    make it do something interesting. If you get stuck, ask one of the
+    OpenCCG experts on hand.</p>
+
+  </body>
+
+</html>

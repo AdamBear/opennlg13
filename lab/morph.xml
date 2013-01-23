@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<morph name="lab-1">
+
+  <entry word="Giovanni's" pos="proper-noun"/>
+  <entry word="food" pos="common-noun"/>
+  <entry word="cheap" pos="adjective"/>
+  <entry word="Italian" pos="adjective"/>
+  <entry word="rocks" pos="intransitive-verb" stem="rock"/>
+  <entry word="serves" pos="transitive-verb" stem="serve"/>
+  <entry word="some" pos="determiner"/>
+
+
+
+
+  <!-- <entry word="and" pos="conjunction"/> -->
+
+  <!-- <entry word="rock" pos="intransitive-verb"/> -->
+  <!-- <entry word="serve" pos="transitive-verb"/> -->
+
+  <!--
+  <macro name="@singular">
+    <fs id="1" attr="num" val="sg"/>
+  </macro>
+
+  <macro name="@plural">
+    <fs id="1" attr="num" val="pl"/>
+  </macro>
+  -->
+
+</morph>
