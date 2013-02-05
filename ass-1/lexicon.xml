@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ccg-lexicon name="ass-1">
+
+  <family name="proper-noun" pos="proper-noun">
+    <entry name="Primary">
+      <atomcat type="NP">
+	<fs>
+	  <feat attr="index">
+	    <lf>
+	      <nomvar name="X"/>
+	    </lf>
+	  </feat>
+          <feat attr="singular" val="yes"/>
+	</fs>
+	<lf>
+	  <satop nomvar="X">
+	    <prop name="[*DEFAULT*]"/>
+	  </satop>
+	</lf>
+      </atomcat>
+    </entry>
+  </family>
+
+  <family name="common-noun" pos="common-noun">
+    <entry name="Primary">
+      <atomcat type="N">
+	<fs>
+	  <feat attr="index">
+	    <lf>
+	      <nomvar name="X"/>
+	    </lf>
+	  </feat>
+	</fs>
+	<lf>   
+	  <satop nomvar="X">
+	    <prop name="[*DEFAULT*]"/>
+	  </satop>
+	</lf>
+      </atomcat>
+    </entry>
+  </family>
+
+  <family name="intransitive-verb" pos="intransitive-verb">
+    <entry name="Primary">
+      <complexcat>
+	<atomcat type="S">
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="E"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat>
+        <slash dir="\"/>
+        <atomcat type="NP">
+	  <fs id="1"> <!-- id attribute needed to get features from macros -->
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="X"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat>
+	<lf>
+	  <satop nomvar="E">
+	    <prop name="[*DEFAULT*]"/>
+	  </satop>
+	  <satop nomvar="E">
+	    <diamond mode="ARG1">
+	      <nomvar name="X"/>
+	    </diamond>
+	  </satop>    
+	</lf>
+      </complexcat>
+    </entry>
+  </family>
+
+  <family name="transitive-verb" pos="transitive-verb">
+    <entry name="Primary">
+      <complexcat>
+	<atomcat type="S">
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="E"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat>
+        <slash dir="\"/>
+        <atomcat type="NP">
+	  <fs id="1"> <!-- id attribute needed to get features from macros -->
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="X"/>
+	      </lf>
+	    </feat>
+	  </fs>	  
+	</atomcat>
+        <slash dir="/"/>
+        <atomcat type="NP">
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="Y"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat>
+	<lf>
+	  <satop nomvar="E">
+	    <prop name="[*DEFAULT*]"/>
+	  </satop>
+	  <satop nomvar="E">
+	    <diamond mode="ARG1">
+	      <nomvar name="X"/>
+	    </diamond>
+	  </satop>    
+	  <satop nomvar="E">
+	    <diamond mode="ARG2">
+	      <nomvar name="Y"/>
+	    </diamond>
+	  </satop> 
+	</lf>
+      </complexcat>
+    </entry>
+  </family>
+
+  <family name="adjective" pos="adjective">
+    <entry name="Primary">
+      <atomcat type="A">
+	<fs id="1"> <!-- THIS ID IS USEFUL FOR YOUR MACROS IN QUESTION 4 -->
+	  <feat attr="index">
+	    <lf>
+	      <nomvar name="P"/>
+	    </lf>
+	  </feat>
+	</fs>
+	<lf>
+	  <satop nomvar="P">
+	    <prop name="[*DEFAULT*]"/>
+	  </satop>
+	</lf>
+      </atomcat>
+    </entry>
+  </family>
+
+  <family name="conjunction" pos="conjunction"> 
+    <entry name="NP-conjunction"> 
+      <complexcat> 
+	<atomcat type="NP">
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="X"/>
+	      </lf>
+	    </feat>
+	    <feat attr="singular" val="no"/>
+	  </fs>
+	</atomcat>
+	<slash dir="\"/> 
+	<atomcat type="NP"> 
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="Y"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat> 
+	<slash dir="/"/> 
+	<atomcat type="NP"> 
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="Z"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat> 
+	<lf>
+	  <satop nomvar="X">
+	    <prop name="[*DEFAULT*]"/>
+	  </satop>
+	  <satop nomvar="X">
+	    <diamond mode="CONJ">
+	      <nomvar name="Y"/>
+	    </diamond>
+	  </satop>    
+	  <satop nomvar="X">
+	    <diamond mode="CONJ">
+	      <nomvar name="Z"/>
+	    </diamond>
+	  </satop>  
+	</lf>
+      </complexcat> 
+    </entry>
+    <!-- 
+    <entry name="S-conjunction"> 
+      YOUR ANSWER TO QUESTION 1 GOES HERE
+    </entry>
+    -->
+    <!-- 
+    <entry name="VP-conjunction"> 
+      YOUR ANSWER TO QUESTION 2 GOES HERE
+    </entry>
+    -->
+  </family>
+
+  <!--  
+  <family name="adverb" pos="adverb"> 
+    <entry name="Intensifier"> 
+      YOUR ANSWER TO QUESTION 3 GOES HERE
+    </entry>
+  </family>
+  -->
+
+  <!-- 
+  <family name="determiner" pos="determiner" indexRel="" closed='true">
+    <entry name="Primary"> 
+      YOUR ANSWER TO QUESTION 6 GOES HERE (don't forget to add an IndexRel)
+    </entry>
+    <member stem="a"/>
+  </family>
+  -->
+
+
+</ccg-lexicon>

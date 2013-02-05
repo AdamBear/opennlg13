@@ -1,0 +1,267 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+  <head>
+    <title>NLG assignment 1</title>
+  </head>
+
+  <body>
+
+    <h1>NLG assignment 1 - Extending an OpenCCG grammar for generation</h1>
+
+    <h2>0. Downloading the OpenCCG grammar</h2>
+
+    <p>From inside the subdirectory of your home directory where you
+    keep all your code for the NLG course, type the following command
+    into a terminal window:</p>
+
+    <pre>  
+      svn checkout http://opennlg13.googlecode.com/svn/trunk/ass-1 ass-1
+    </pre>
+
+    <p>This should create a subdirectory called <tt>ass-1</tt>
+    containing five XML files and a copy of these instructions. Move
+    into this subdirectory and list them to make sure.</p>
+
+    <p>Before starting the assignment questions listed below, you
+    should spend a while familiarising yourself with the OpenCCG
+    grammar in the XML files. In this assignment, you will be
+    gradually extending this grammar, step-by-step, so as to generate
+    a wider range of grammatical sentences about restaurants.</p>
+
+    <p>There is a <tt>testbed.xml</tt> file included with the
+    grammar. YOU WILL NOT NEED TO EDIT THIS FILE IN THE COURSE OF THIS
+    ASSIGNMENT. The testbed contains around 50 tests. At the moment
+    the grammar passes at least the first 13 of these (using
+    <tt>ccg-test</tt>). Your job is to extend the grammar so that it
+    passes ALL tests by the time you are finished. If you take a look
+    at the testbed file, you will see that the subsequent tests are
+    divided into sections, one for each of the questions in the
+    assignment, so you can easily keep track of your progress and
+    success. </p>
+
+    <p>N.B. If your entire grammar is working correctly, all tests in
+    the testbed will have "ok" in the Parse column. "FAILED" means
+    that the test failed, not that the parse failed. For instance, we
+    don't want "Giovanni's serves" to parse, so we have set
+    <tt>numOfParses</tt> to "0".</p>
+
+    <pre>
+  &lt;item numOfParses="0" string="Giovanni's serves"/>
+    </pre>
+
+    <p>In this cases, the output from <tt>ccg-test</tt> will be</p>
+
+    <pre>
+  Parse   Realize String
+  -----   ------- ------
+
+  ok      -       *Giovanni's serves
+    </pre>
+
+    <p>Hint: When you start <tt>tccg</tt>, if you have made a mistake
+    there may be useful error messages, which appear between "Loading
+    grammar from URL: ..." and "Grammar ass-1 loaded". If you get
+    stuck, try consulting the <a
+    href="http://comp.ling.utexas.edu/wiki/lib/exe/fetch.php/openccg/openccg-guide.pdf">Rough Guide to OpenCCG</a>.</p>
+
+    <p>In some questions, we have specified a name for a category, or
+    specific semantics for you to aim for in your answers.  You may
+    disagree with our choices, but that's ok, because in OpenCCG there
+    are often many ways to do the same thing.  Ours may not even be
+    the best way, but please follow the instructions where specified,
+    and don't spend too much time worrying about alternative category
+    names or semantics.</p>
+
+    <p><b>PLEASE READ THROUGH ALL THE QUESTIONS BEFORE STARTING.</b></p>
+
+    <p>And last but not least, remember that we're
+    only interested in your work, not anyone else's submitted
+    under your name.</p>
+
+    <h2>1. Adding sentential conjunction (15 marks)</h2>
+
+    <p>Currently, the grammar is capable of generating sentences with
+    conjoined subject NPs, for example "Giovanni's and Dario's serve
+    cheap Italian food". Please extend the grammar so that it can
+    generate sentences involving two conjoined <b>sentences</b>, for
+    example "Giovanni's rocks and Dario's serves cheap food". You
+    should do this by adding a second <tt>entry</tt> element to the
+    lexical family <tt>conjunction</tt>.</p>
+
+    <p>Your grammar should assign the following semantic
+    representation to the sentence "Giovanni's rocks and Dario's
+    serves food", where each sentence denotes a separate conjunct (you
+    might want to draw the graph out on paper to make sure you
+    understand what is going on):</p>
+
+    <pre>
+  @w2(and ^ 
+      &lt;CONJ>(w1 ^ rock ^ 
+             &lt;ARG1>(w0 ^ Giovanni's)) ^ 
+      &lt;CONJ>(w4 ^ serve ^ 
+             &lt;ARG1>(w3 ^ Dario's) ^ 
+             &lt;ARG2>(w5 ^ food)))
+    </pre>
+
+
+    <h2>2. Adding VP conjunction (20 marks)</h2>
+
+    <p>Please extend the grammar so that it can generate sentences
+    involving two conjoined <b>verb phrases</b>, for example
+    "Giovanni's rocks and serves cheap food". Make sure you get
+    subject/verb agreement to work out properly - it shouldn't
+    generate sentences like "*Giovanni's rocks and serve cheap
+    food".</p>
+
+    <p>The semantics you assign to VP conjunction should be the same
+    as sentential conjunction, but you need to ensure that the subject
+    is "shared" between the two. Thus, the semantics of "Giovanni's
+    rocks and serves food" should be:</p>
+
+    <pre>
+  @w2(and ^ 
+      &lt;CONJ>(w1 ^ rock ^ 
+             &lt;ARG1>w0) ^ 
+      &lt;CONJ>(w3 ^ serve ^ 
+             &lt;ARG1>(w0 ^ Giovanni's) ^ 
+             &lt;ARG2>(w4 ^ food)))
+    </pre>
+
+
+    <h2>3. Adding adjective intensifiers (20 marks)</h2>
+
+    <p>We now want to be able to generate sentences using <b>adverbs</b> like
+    "very" or "really", which modify (or "intensify")
+    adjectives. Examples of such sentences are "Giovanni's serves
+    really cheap food" or "Giovanni's and Dario's serve very good
+    Italian food". We want a phrase like "really cheap" to have a
+    semantic structure which makes it clear that the adverb modifies
+    the adjective, like this:</p>
+
+    <pre>
+  @w1(good ^ 
+      &lt;MOD>(v1 ^ very))
+    </pre>
+
+    <p>Add the words "very" and "really" to the morphology file. Call
+    your new lexical family <tt>adverb</tt>.</p>
+
+
+    <h2>4. Restricting intensifiers to gradable adjectives (20 marks)</h2>
+
+    <p>Adjectives in English divide into two groups - "gradable"
+    adjectives and "non-gradable" adjectives. Ideally, we want words
+    like "very" and "really" only to intensify the gradable ones. For
+    purposes of this assignment, assume that adjectives of nationality
+    are non-gradable, and all the others are gradable.</p>
+
+    <p>Your job now is to modify your <tt>adverb</tt> lexical family
+    to ensure that the grammar CANNOT generate noun phrases like
+    "*very Italian food" or "*cheap very Indian food".</p>
+
+    <p>Define adjective macros <tt>@gradable</tt> and
+    <tt>@non-gradable</tt> which introduce one of the following
+
+    features to <em>every</em> atomic category of type 'A': (a)
+    <tt>gradable: yes</tt>; or (b) <tt>gradable: no</tt>. Use the
+    <tt>@singular</tt> and <tt>@non-singular</tt> macros on lexical nouns
+    for inspiration. Then modify your <tt>adverb</tt> family to
+    restrict the set of adjectives that "very" and "really" can
+    combine with.</p>
+
+
+    <h2>5. Ensuring correct adjective ordering (25 marks)</h2>
+
+    <p>In English, some adjective orderings are acceptable whereas
+    others are not.  In our example domain, adjectives of nationality
+    must always come after other adjectives. In other words, assuming
+    the categories we have just defined, non-gradable adjectives must
+    follow gradable ones.  For example "cheap Italian food" is
+    acceptable, while "*Italian cheap food" is not.</p>
+
+    <p>Your task in this question is to edit the OpenCCG grammar so
+    that correct adjective ordering is preserved. You need to use the
+    'gradable' feature on atomic categories of type 'A' that you
+    defined in question 4 to do this.</p>
+
+    <p>Here is a tip: In the <tt>rules.xml</tt> file you will find a
+    typechanging rule with the name <tt>adjective</tt>, which converts
+    'predicative' adjecties into 'attributive' (i.e. noun-modifying)
+    ones.  You should replace this rule with two copies, one called
+    <tt>adj-gradable</tt> (which converts gradable predicative
+    adjectives into attributive ones), and the other called
+    <tt>adj-non-gradable</tt> (which converts non-gradable predicative
+    adjectives into attributive ones). Then edit these two rules so
+    that it is only possible for adjectives to occur in the order
+    specified above.</p>
+
+    <h2>Questions 6. and 7. are only necessary for MSc students,
+    undergraduates stop here</h2>
+
+    <h2>6. Count nouns and the indefinite article (25 marks)</h2>
+
+    <p>The lexicon as it stands at the moment contains three 'mass'
+    nouns - 'food', 'music' and 'decor'. Recall that the main
+    syntactic property of a mass noun is that it can form an NP
+    without needing to be prefixed by an article or determiner
+    (e.g. "Giovanni's serves food"). In fact, mass nouns CANNOT be
+    prefixed with the indefinite article - "*Giovanni's serves a
+    food". (There *are* other senses of 'food' which can be used with
+    the indefinite article, but we ignore these in this exercise.)</p>
+
+    <p>Note that we have chosen to encode the concept of 'mass' noun
+    in the current lexicon using the feature <tt>singular: no</tt>.</p>
+
+    <p>This question involves adding the noun "restaurant" to the
+    lexicon. It is an example of a "count" noun rather than a "mass"
+    noun. Count nouns CAN and indeed MUST occur with a determiner.</p>
+
+    <p>Add the word "restaurant", and give it the POS <tt>common-noun</tt>.
+    Add the word "a" and give it the POS <tt>determiner</tt>.</p>
+
+    <p>Add a new lexical family for "determiner", and use features to
+    ensure that a determiner can ONLY be used with a count noun. You
+    will probably need to edit the adjective rules as well.</p>
+
+    <p>Hint: in order to get this to work, you may need to define the
+    lexical family for 'determiner' as a 'closed' family. There are
+    two possible reasons for this, both of which have to do with
+    allowing the realiser to identify the relevant 'indexing' EP, as
+    discussed in the lectures. In order for successful realisation to
+    take place, the semantic representation for every lexical entry
+    must contain exactly one EP of the form @x p, where p is a node
+    label. In cases where the word is semantically vacuous, we
+    therefore need to identify the lexical family as
+    <tt>indexRel="*NoSem*"</tt> (this was discussed in the
+    lectures). In other cases, we may want the indexing EP to be an edge
+    label, so we need to identify the family as <tt>indexRel="..."</tt>,
+    where the value of the <tt>indexRel</tt> is the relevant edge
+    label itself. Finally, note that every family with a specified
+    <tt>indexRel</tt> MUST be 'closed', and have its members
+    explicitly listed.</p>
+
+
+    <h2>7. Plural count nouns (15 marks)</h2>
+
+    <p>Add the plural count noun "restaurants" and the plural verb
+    "are" to the lexicon. Make sure you can parse and generate
+    sentences like "Giovanni's and Kalpna are restaurants".  Make sure
+    that subject-verb agreement works, so that you can't generate
+    sentences like "*Giovanni's and Kalpna is a restaurant" or
+    "*Giovanni's are restaurants".</p>
+
+
+    <h2>Submission</h2>
+
+    <p>This assignment is due in at 16.00 on Thursday 16 February.  It
+    should be submitted using the submit program.</p>
+
+
+    <h2>Problems</h2>
+
+    <p>If you have any technical problems with this assignment, please email <tt>amyi@inf.ed.ac.uk</tt>
+    Don't ask me how to answer the questions :)</p>
+  </body>
+
+</html>

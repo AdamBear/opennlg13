@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<grammar name="ass-1">
+
+  <lexicon file="lexicon.xml"/>
+  <morphology file="morph.xml"/>
+  <rules file="rules.xml"/>
+
+</grammar>
+
