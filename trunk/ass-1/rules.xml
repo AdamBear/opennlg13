@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rules name="ass-1">
+
+  <application dir="forward"/>
+  <application dir="backward"/>
+
+  <typechanging name="bare-NP">
+    <arg>
+      <atomcat type="N">
+        <fs id="1">
+          <feat attr="index">
+            <lf>
+              <nomvar name="X"/>
+            </lf>
+          </feat>
+	  <feat attr="singular" val="no"/>
+        </fs>
+      </atomcat>
+    </arg>
+    <result>
+      <atomcat type="NP">
+	<fs id="1"/>
+      </atomcat>
+    </result>
+  </typechanging>
+
+  <!-- copy and edit this rule for question 5 -->
+
+  <typechanging name="adjective">
+    <arg>
+      <atomcat type="A">
+        <fs>
+          <feat attr="index">
+            <lf>
+              <nomvar name="P"/>
+            </lf>
+          </feat>
+        </fs>
+      </atomcat>
+    </arg>
+    <result>
+      <complexcat>
+	<atomcat type="N">
+	  <fs id="1">
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="X"/>
+	      </lf>
+	    </feat>
+ 	  </fs>
+	</atomcat>
+        <slash dir="/"/>
+	<atomcat type="N">
+	  <fs id="1"/>
+	</atomcat>
+	<lf>
+	  <satop nomvar="X">
+	    <diamond mode="MOD">
+	      <nomvar name="P"/>
+	    </diamond>
+	  </satop>    
+	</lf>
+      </complexcat>
+    </result>
+  </typechanging>
+
+</rules>

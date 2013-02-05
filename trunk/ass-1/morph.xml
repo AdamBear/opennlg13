@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<morph name="ass-1">
+
+  <!-- restaurant names -->
+  <entry word="Giovanni's" pos="proper-noun"/>
+  <entry word="Dario's" pos="proper-noun"/>
+  <entry word="Kalpna" pos="proper-noun"/>
+  <entry word="Bangalore" pos="proper-noun"/>
+  <entry word="ChopChop" pos="proper-noun"/>
+  <entry word="Effi's" pos="proper-noun"/>
+  <entry word="Ayutthaya" pos="proper-noun"/>
+
+  <!-- common nouns -->
+  <entry word="food" pos="common-noun" macros="@non-singular"/>
+  <entry word="music" pos="common-noun" macros="@non-singular"/>
+  <entry word="decor" pos="common-noun" macros="@non-singular"/>
+
+  <!-- nationality adjectives -->
+  <entry word="Italian" pos="adjective"/>
+  <entry word="Indian" pos="adjective"/>
+  <entry word="Chinese" pos="adjective"/>
+  <entry word="Thai" pos="adjective"/>
+  <entry word="Turkish" pos="adjective"/>
+
+  <!-- gradable adjectives -->
+  <entry word="cheap" pos="adjective"/>
+  <entry word="expensive" pos="adjective"/>
+  <entry word="inexpensive" pos="adjective" stem="cheap"/>
+  <entry word="funky" pos="adjective"/>
+  <entry word="groovy" pos="adjective"/>
+  <entry word="loud" pos="adjective"/>
+  <entry word="great" pos="adjective"/>
+  <entry word="good" pos="adjective"/>
+  <entry word="bad" pos="adjective"/>
+
+  <!-- verbs -->
+  <entry word="rock" pos="intransitive-verb" macros="@non-singular"/>
+  <entry word="rocks" pos="intransitive-verb" stem="rock" macros="@singular"/>
+  <entry word="serve" pos="transitive-verb" macros="@non-singular"/>
+  <entry word="serves" pos="transitive-verb" stem="serve" macros="@singular"/>
+  <entry word="play" pos="transitive-verb" macros="@non-singular"/>
+  <entry word="plays" pos="transitive-verb" stem="play" macros="@singular"/>
+  <entry word="have" pos="transitive-verb" macros="@non-singular"/>
+  <entry word="has" pos="transitive-verb" stem="have" macros="@singular"/>
+  <entry word="is" pos="transitive-verb" stem="be" macros="@singular"/>
+
+  <!-- others -->
+  <entry word="and" pos="conjunction"/>
+
+  <!-- macros -->
+  <macro name="@singular">
+    <fs id="1" attr="singular" val="yes"/>
+  </macro>
+  <macro name="@non-singular">
+    <fs id="1" attr="singular" val="no"/>
+  </macro>
+
+</morph>
