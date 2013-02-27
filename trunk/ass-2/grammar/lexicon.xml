@@ -1,0 +1,900 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ccg-lexicon name="ass-1">
+
+  <family name="proper-noun" pos="proper-noun">
+    <entry name="Primary">
+      <atomcat type="np">
+	<fs>
+	  <feat attr="index">
+	    <lf>
+	      <nomvar name="X"/>
+	    </lf>
+	  </feat>
+	  <feat attr="singular" val="yes"/>
+	</fs>
+	<lf>
+	  <satop nomvar="X">
+	    <prop name="[*DEFAULT*]"/>
+	  </satop>
+	</lf>
+      </atomcat>
+    </entry>
+  </family>
+
+  <family name="common-noun" pos="common-noun">
+    <entry name="Primary">
+      <atomcat type="n">
+	<fs id="1">
+	  <feat attr="index">
+	    <lf>
+	      <nomvar name="X"/>
+	    </lf>
+	  </feat>
+	</fs>
+	<lf>   
+	  <satop nomvar="X">
+	    <prop name="[*DEFAULT*]"/>
+	  </satop>
+	</lf>
+      </atomcat>
+    </entry>
+  </family>
+
+  <family name="pronoun" pos="pronoun" closed="true">
+    <entry name="Primary">
+      <atomcat type="np">
+	<fs id="1">
+	  <feat attr="index">
+	    <lf>
+	      <nomvar name="X"/>
+	    </lf>
+	  </feat>
+	</fs>
+	<lf>
+	  <satop nomvar="X">
+	    <prop name="[*DEFAULT*]"/>
+	  </satop>
+	</lf>
+      </atomcat>
+    </entry>
+    <member stem="pronoun"/>
+  </family>
+
+
+  <family name="intransitive-verb" pos="intransitive-verb">
+    <entry name="Primary">
+      <complexcat>
+	<atomcat type="s">
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="E"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat>
+	<slash dir="\"/>
+	<atomcat type="np">
+	  <fs id="1">
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="X"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat>
+	<lf>
+	  <satop nomvar="E">
+	    <prop name="[*DEFAULT*]"/>
+	  </satop>
+	  <satop nomvar="E">
+	    <diamond mode="arg1">
+	      <nomvar name="X"/>
+	    </diamond>
+	  </satop>    
+	</lf>
+      </complexcat>
+    </entry>
+  </family>
+
+  <family name="transitive-verb" pos="transitive-verb">
+    <entry name="Primary">
+      <complexcat>
+	<atomcat type="s">
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="E"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat>
+	<slash dir="\"/>
+	<atomcat type="np">
+	  <fs id="1">
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="X"/>
+	      </lf>
+	    </feat>
+	  </fs>	  
+	</atomcat>
+	<slash dir="/"/>
+	<atomcat type="np">
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="Y"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat>
+	<lf>
+	  <satop nomvar="E">
+	    <prop name="[*DEFAULT*]"/>
+	  </satop>
+	  <satop nomvar="E">
+	    <diamond mode="arg1">
+	      <nomvar name="X"/>
+	    </diamond>
+	  </satop>    
+	  <satop nomvar="E">
+	    <diamond mode="arg2">
+	      <nomvar name="Y"/>
+	    </diamond>
+	  </satop> 
+	</lf>
+      </complexcat>
+    </entry>
+  </family>
+
+  <family name="copula-verb" pos="copula-verb">
+    <entry name="Primary">
+      <complexcat>
+	<atomcat type="s">
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="E"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat>
+	<slash dir="\"/>
+	<atomcat type="np">
+	  <fs id="1">
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="X"/>
+	      </lf>
+	    </feat>
+	  </fs>	  
+	</atomcat>
+	<slash dir="/"/>
+	<atomcat type="np">
+	  <fs inheritsFrom="1">
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="Y"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat>
+	<lf>
+	  <satop nomvar="E">
+	    <prop name="[*DEFAULT*]"/>
+	  </satop>
+	  <satop nomvar="E">
+	    <diamond mode="arg1">
+	      <nomvar name="X"/>
+	    </diamond>
+	  </satop>    
+	  <satop nomvar="E">
+	    <diamond mode="arg2">
+	      <nomvar name="Y"/>
+	    </diamond>
+	  </satop> 
+	</lf>
+      </complexcat>
+    </entry>
+  </family>
+
+  <family name="adjective" pos="adjective">
+    <entry name="Primary">
+      <atomcat type="a">
+	<fs id="1">
+	  <feat attr="index">
+	    <lf>
+	      <nomvar name="P"/>
+	    </lf>
+	  </feat>
+	</fs>
+	<lf>
+	  <satop nomvar="P">
+	    <prop name="[*DEFAULT*]"/>
+	  </satop>
+	</lf>
+      </atomcat>
+    </entry>
+  </family>
+
+
+  <family name="adverb" pos="adverb">
+    <entry name="Primary">
+      <complexcat> 
+	<atomcat type="a">
+	  <fs id="1">
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="X"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat>
+	<slash dir="/"/>
+	<atomcat type="a">
+	  <fs id="1">
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="X"/>
+	      </lf>
+	    </feat>
+	    <feat attr="gradable" val="yes"/>
+	  </fs>
+	</atomcat>
+	<lf>
+	  <satop nomvar="X">
+	    <diamond mode="mod">
+	      <nomvar name="P"/>
+	    </diamond>
+	  </satop>    
+	  <satop nomvar="P">
+	    <prop name="[*DEFAULT*]"/>
+	  </satop>
+	</lf>
+      </complexcat>
+    </entry>
+  </family>
+
+  <family name="conjunction" pos="conjunction" closed="true"> 
+    <entry name="NP-conjunction"> 
+      <complexcat> 
+	<atomcat type="np">
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="X"/>
+	      </lf>
+	    </feat>
+	    <feat attr="singular" val="no"/>
+	  </fs>
+	</atomcat>
+	<slash dir="\"/> 
+	<atomcat type="np"> 
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="Y"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat> 
+	<slash dir="/"/> 
+	<atomcat type="np"> 
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="Z"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat> 
+	<lf>
+	  <satop nomvar="X">
+	    <prop name="[*DEFAULT*]"/>
+	  </satop>
+	  <satop nomvar="X">
+	    <diamond mode="conj">
+	      <nomvar name="Y"/>
+	    </diamond>
+	  </satop>    
+	  <satop nomvar="X">
+	    <diamond mode="conj">
+	      <nomvar name="Z"/>
+	    </diamond>
+	  </satop>  
+	</lf>
+      </complexcat> 
+    </entry>
+    <entry name="S-conjunction"> 
+      <complexcat> 
+	<atomcat type="s">
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="E"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat>
+	<slash dir="\"/> 
+	<atomcat type="s"> 
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="F"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat> 
+	<slash dir="/"/> 
+	<atomcat type="s"> 
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="G"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat> 
+	<lf>
+	  <satop nomvar="E">
+	    <prop name="[*DEFAULT*]"/>
+	  </satop>
+	  <satop nomvar="E">
+	    <diamond mode="conj">
+	      <nomvar name="F"/>
+	    </diamond>
+	  </satop>    
+	  <satop nomvar="E">
+	    <diamond mode="conj">
+	      <nomvar name="G"/>
+	    </diamond>
+	  </satop>  
+	</lf>
+      </complexcat> 
+      </entry> 
+      <entry name="VP-conjunction"> 
+	<complexcat> 
+	  <atomcat type="s">
+	    <fs>
+	      <feat attr="index">
+		<lf>
+		  <nomvar name="E"/>
+		</lf>
+	      </feat>
+	    </fs>
+	  </atomcat>
+	  <slash dir="\"/>
+	  <atomcat type="np">
+	    <fs id="1">
+	      <feat attr="index">
+		<lf>
+		  <nomvar name="X"/>
+		</lf>
+	      </feat>
+	    </fs>
+	  </atomcat>
+	  <slash dir="\"/>
+	  <complexcat>
+	    <atomcat type="s">
+	      <fs>
+		<feat attr="index">
+		  <lf>
+		    <nomvar name="F"/>
+		  </lf>
+		</feat>
+	      </fs>
+	    </atomcat>
+	    <slash dir="\"/>
+	    <atomcat type="np">
+	      <fs id="1"/>
+	    </atomcat>
+	  </complexcat>
+	  <slash dir="/"/>
+	  <complexcat>
+	    <atomcat type="s">
+	      <fs>
+		<feat attr="index">
+		  <lf>
+		    <nomvar name="G"/>
+		  </lf>
+		</feat>
+	      </fs>
+	    </atomcat>
+	    <slash dir="\"/>
+	    <atomcat type="np">
+	      <fs id="1"/>
+	    </atomcat>
+	  </complexcat>
+	  <lf>
+	    <satop nomvar="E">
+	      <prop name="[*DEFAULT*]"/>
+	    </satop>
+	    <satop nomvar="E">
+	      <diamond mode="conj">
+		<nomvar name="F"/>
+	      </diamond>
+	    </satop>    
+	    <satop nomvar="E">
+	      <diamond mode="conj">
+		<nomvar name="G"/>
+	      </diamond>
+	    </satop>  
+	  </lf>
+	</complexcat> 
+      </entry> 
+      <member stem="and"/>
+  </family>
+
+  <family name="determiner" pos="determiner" indexRel="det" closed="true">
+    <entry name="np"> 
+      <complexcat> 
+	<atomcat type="np">
+	  <fs id="1">
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="X"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat>
+	<slash dir="/"/> 
+	<atomcat type="n">
+	  <fs id="1">
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="X"/>
+	      </lf>
+	    </feat>
+	    <feat attr="singular" val="yes"/>
+	  </fs>
+	</atomcat>
+	<lf>
+	  <satop nomvar="X">
+	    <diamond mode="det">
+	      <prop name="[*DEFAULT*]"/>
+	    </diamond>
+	  </satop>   
+	</lf> 
+      </complexcat>
+    </entry>
+    <member stem="indef-det"/>
+    <member stem="def-det"/>
+  </family>
+
+  <family name="relative-pronoun" pos="relative-pronoun" closed="true" indexRel="relclause">
+    <entry name="Non-Restrictive">
+      <complexcat>
+	<atomcat type="np">
+	  <fs id="1">
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="X"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat>
+	<slash dir="\"/>
+	<atomcat type="np">
+	  <fs id="1">
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="X"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat>
+	<slash dir="\"/>
+	<atomcat type="punct">
+	  <fs val="," attr="lex"/>
+	</atomcat>
+	<slash dir="/"/>
+	<atomcat type="punct">
+	  <fs val="," attr="lex"/>
+	</atomcat>
+	<slash dir="/"/>
+	<complexcat>
+	  <atomcat type="s">
+	    <fs>
+	      <feat attr="index">
+		<lf>
+		  <nomvar name="E"/>
+		</lf>
+	      </feat>
+	    </fs>
+	  </atomcat>
+	  <slash dir="\"/>
+	  <atomcat type="np">
+	    <fs id="1">
+	      <feat attr="index">
+		<lf>
+		  <nomvar name="X"/>
+		</lf>
+	      </feat>
+	    </fs>
+	  </atomcat>
+	</complexcat>
+	<lf>
+	  <satop nomvar="X">
+	    <diamond mode="relclause">
+	      <nomvar name="E"/>
+	    </diamond>
+	  </satop>
+	</lf>
+      </complexcat>
+    </entry>
+    <member stem="which"/>
+  </family>
+
+
+  <family name="comma" pos="comma" indexRel="*NoSem*" closed="true">
+    <entry name="Primary">
+      <atomcat type="punct">
+	<fs>
+	  <feat val="," attr="lex"/>
+	</fs>
+      </atomcat>
+    </entry>
+    <member stem=","/>
+  </family>
+
+  <family name="fullstop1" pos="fullstop" closed="true" indexRel="*NoSem*">
+    <entry name="Primary">
+      <atomcat type="punct">
+	<fs>
+	  <feat val="." attr="lex"/>
+	</fs>
+      </atomcat>
+    </entry>
+   <member stem="."/>
+  </family>
+  <family name="fullstop2" pos="fullstop" closed="true" indexRel="mood">
+
+    <entry name="make-sent">
+      <complexcat>
+	<atomcat type="utterance">
+	  <fs inheritsFrom="2">
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="E"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat>
+	<slash dir="\"/>
+	<atomcat type="s">
+	  <fs id="2">
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="E"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat>
+	<lf>
+	  <satop nomvar="E">
+	    <diamond mode="mood">
+	      <prop name="dcl"/>
+	    </diamond>
+	  </satop>
+	</lf>
+      </complexcat>
+    </entry>
+    <member stem="."/>
+  </family>
+  <family name="two-utts" pos="fullstop" closed="true" indexRel="*NoSem*">
+    <entry name="utt-conj">
+      <complexcat>
+	<atomcat type="utterance">
+	  <fs inheritsFrom="2">
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="F"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat>
+	<slash dir="\"/>
+	<atomcat type="utterance">
+	  <fs id="2">
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="E"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat>
+	<slash dir="\"/>
+	<atomcat type="s"/>
+<!--	<lf>
+	  <satop nomvar="E">
+	    <diamond mode="uttpos">
+	      <prop name="first"/>
+	    </diamond>
+	  </satop>
+	</lf>-->
+      </complexcat>
+    </entry>
+    <member stem="."/>
+  </family>
+<!--  <family name="fullstop4" pos="fullstop" closed="true" indexRel="mood">
+    <entry name="utt-conj">
+      <complexcat>
+	<atomcat type="utterance">
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="E"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat>
+	<slash dir="\"/>
+	<atomcat type="utterance">
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="F"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat>
+	<slash dir="\"/>
+	<atomcat type="s"/>
+	<lf>
+	<satop nomvar="F">
+	  <diamond mode="mood">
+	    <prop name="first"/>
+	  </diamond>
+	</satop>
+      </lf>
+      </complexcat>
+    </entry>
+    <member stem="."/>
+  </family>-->
+  <family pos="conjunction" name="while-contrast" closed="true">
+    <entry name="Primary">
+      <complexcat>
+	<atomcat type="s">
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="G"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat>
+	<slash dir="/"/>
+	<atomcat type="s">
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="E"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat>
+	<slash dir="/"/>
+	<atomcat type="punct">
+	  <fs val="," attr="lex"/>
+	</atomcat>
+	<slash dir="/"/>
+	<atomcat type="s">
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="F"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat>
+	<lf>
+	  <satop nomvar="G">
+	    <prop name="contrast-rel"/>
+	    <diamond mode="arg1">
+	      <nomvar name="E"/>
+	    </diamond>
+	    <diamond mode="arg2">
+	      <nomvar name="F"/>
+	    </diamond>
+	  </satop>
+	</lf>
+      </complexcat>
+    </entry>
+    <member stem="while" pred="contrast-rel"/>
+  </family>
+
+<!--  <family pos="conjunction" name="otoh-contrast" closed="true">
+    <entry name="Primary">
+      <complexcat>
+	<atomcat type="s">
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="G"/>
+	      </lf>
+	    </feat>
+	    <feat val="yes" attr="contrast"/>
+	  </fs>
+	</atomcat>
+	<slash dir="/"/>
+	<atomcat type="s">
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="F"/>
+	      </lf>
+	    </feat>
+	    <feat val="yes" attr="contrast"/>
+	  </fs>
+	</atomcat>
+	<slash dir="/"/>
+	<atomcat type="punct">
+	  <fs val="," attr="lex"/>
+	</atomcat>
+	<slash dir="\"/>
+	<atomcat type="statement">
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="E"/>
+	      </lf>
+	    </feat>
+	    <feat val="no" attr="contrast"/>
+	  </fs>
+	</atomcat>
+	<lf>
+	  <satop nomvar="G">
+	    <prop name="contrast-rel"/>
+	    <diamond mode="arg1">
+	      <nomvar name="F"/>
+	    </diamond>
+	    <diamond mode="arg2">
+	      <nomvar name="E"/>
+	    </diamond>
+	  </satop>
+	</lf>
+      </complexcat>
+    </entry>
+    <member stem="otoh" pred="contrast-rel"/>
+  </family>-->
+
+  <family pos="conjunction" name="but-contrast" closed="true">
+    <entry name="Primary">
+      <complexcat>
+	<atomcat type="s">
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="G"/>
+	      </lf>
+	    </feat>
+	    <feat val="yes" attr="contrast"/>
+	  </fs>
+	</atomcat>
+	<slash dir="/"/>
+	<atomcat type="s">
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="F"/>
+	      </lf>
+	    </feat>
+	    <feat val="no" attr="contrast"/>
+	  </fs>
+	</atomcat>
+	<slash dir="\"/>
+	<atomcat type="s">
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="E"/>
+	      </lf>
+	    </feat>
+	    <feat val="no" attr="contrast"/>
+	  </fs>
+	</atomcat>
+	<lf>
+	  <satop nomvar="G">
+	    <prop name="contrast-rel"/>
+	    <diamond mode="arg1">
+	      <nomvar name="F"/>
+	    </diamond>
+	    <diamond mode="arg2">
+	      <nomvar name="E"/>
+	    </diamond>
+	  </satop>
+	</lf>
+      </complexcat>
+    </entry>
+    <member stem="but" pred="contrast-rel"/>
+    <member stem="while" pred="contrast-rel"/>
+  </family>
+
+  <family pos="conjunction" name="however-contrast" closed="true">
+    <entry name="Primary">
+      <complexcat>
+	<atomcat type="s">
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="G"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat>
+	<slash dir="/"/>
+	<complexcat>
+	  <atomcat type="s">
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="F"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	  </atomcat>
+	  <slash dir="\"/>
+	  <atomcat type="np">
+	    <fs id="1">
+	      <feat attr="index">
+		<lf>
+		  <nomvar name="X"/>
+		</lf>
+	      </feat>
+	    </fs>
+	  </atomcat>
+	</complexcat>
+	<slash dir="/"/>
+	<atomcat type="punct">
+	  <fs val="," attr="lex"/>
+	</atomcat>
+	<slash dir="\"/>
+	<atomcat type="s">
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="E"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat>
+	<slash dir="\"/>
+	<atomcat type="punct">
+	  <fs attr="lex" val="."/>
+	</atomcat>
+	<slash dir="\"/>
+	<atomcat type="np">
+	  <fs id="1">
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="X"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat>
+	<slash dir="\"/>
+	<atomcat type="punct">
+	  <fs attr="lex" val=","/>
+	</atomcat>
+	<lf>
+	  <satop nomvar="G">
+	    <prop name="contrast-rel"/>
+	    <diamond mode="arg1">
+	      <nomvar name="F"/>
+	    </diamond>
+	    <diamond mode="arg2">
+	      <nomvar name="E"/>
+	    </diamond>
+	  </satop>
+	</lf>
+      </complexcat>
+    </entry>
+    <member stem="however" pred="contrast-rel"/>
+    <member stem="otoh" pred="contrast-rel"/>
+  </family>
+
+
+</ccg-lexicon>

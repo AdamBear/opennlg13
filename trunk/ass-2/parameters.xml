@@ -1,0 +1,10 @@
+<parameters>
+  <content-plans>
+    <content-plan file="compare-giovanni-ti_amo.xml"/>
+  </content-plans>
+<!--
+  <ngram-models>
+    <model file="wsj.lm" weight="100"/>
+  </ngram-models>
+-->
+</parameters>

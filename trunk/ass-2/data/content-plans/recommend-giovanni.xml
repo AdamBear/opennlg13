@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<speechplan>
+  <rstplan>
+    <relation name="justify">
+	<proposition-pointer type="nucleus" idref="p1"/>
+	<proposition-pointer type="satellite" idref="p2"/>
+	</relation>
+    <relation name="justify">
+      <proposition-pointer type="nucleus" idref="p1"/>
+      <proposition-pointer type="satellite" idref="p3"/>
+    </relation>
+    <relation name="justify">
+      <proposition-pointer type="nucleus" idref="p1"/>
+      <proposition-pointer type="satellite" idref="p4"/>
+    </relation>
+    <relation name="justify">
+      <proposition-pointer type="nucleus" idref="p1"/>
+      <proposition-pointer type="satellite" idref="p5"/>
+    </relation>
+    <relation name="justify">
+      <proposition-pointer type="nucleus" idref="p1"/>
+      <proposition-pointer type="satellite" idref="p6"/>
+    </relation>
+  </rstplan>
+  <proposition dialogue_act="assert-reco-best" id="p1" attr="best">
+    <subject>
+      <restaurant name="Giovanni's"/>
+    </subject>
+  </proposition>
+  <proposition dialogue_act="assert-reco-decor" id="p2" mod-num="17" attr="decor" mod-word="plain">
+      <subject>
+      <restaurant name="Giovanni's"/>
+      </subject>
+      </proposition>
+  <proposition dialogue_act="assert-reco-food" id="p3" attr="food" mod-word="good">
+    <subject>
+      <restaurant name="Giovanni's"/>
+    </subject>
+  </proposition>
+  <proposition dialogue_act="assert-reco-cuisine" id="p4" attr="cuisine" mod-word="italian">
+    <subject>
+      <restaurant name="Giovanni's"/>
+    </subject>
+  </proposition>
+  <proposition dialogue_act="assert-reco-price" id="p5" mod-num="5" attr="price" mod-word="cheap">
+    <subject>
+      <restaurant name="Giovanni's"/>
+    </subject>
+  </proposition>
+  <proposition dialogue_act="assert-reco-service" id="p6" attr="service" mod-word="friendly">
+    <subject>
+      <restaurant name="Giovanni's"/>
+    </subject>
+  </proposition>
+</speechplan>
