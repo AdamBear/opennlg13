@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<morph name="ass-1">
+
+  <!-- restaurant names -->
+  <entry word="Giovanni's" pos="proper-noun"/>
+  <entry word="Dario's" pos="proper-noun"/>
+  <entry word="Kalpna" pos="proper-noun"/>
+  <entry word="Bangalore" pos="proper-noun"/>
+  <entry word="ChopChop" pos="proper-noun"/>
+  <entry word="Effi's" pos="proper-noun"/>
+  <entry word="Ayutthaya" pos="proper-noun"/>
+  <entry word="Ti_Amo" pos="proper-noun"/>
+
+  <!-- common nouns -->
+  <entry word="food" pos="common-noun" macros="@non-singular"/>
+  <entry word="music" pos="common-noun" macros="@non-singular"/>
+  <entry word="decor" pos="common-noun" macros="@non-singular"/>
+  <entry word="price" pos="common-noun" macros="@non-singular"/>
+  <entry word="service" pos="common-noun" macros="@non-singular"/>
+  <entry word="restaurant" stem="restaurant" pos="common-noun" macros="@singular @a"/>
+  <entry word="restaurants" stem="restaurant" pos="common-noun" macros="@non-singular @a"/>
+  <entry word="overall_value_among_the_selected_restaurants" pos="common-noun" macros="@singular"/>
+
+  <!-- pronouns -->
+  <entry word="it" stem="pronoun" pos="pronoun" macros="@singular-pron"/>
+  <entry word="they" stem="pronoun" pos="pronoun" macros="@non-singular-pron"/>
+
+
+  <!-- adjectives -->
+  <entry word="Italian" pos="adjective" stem="italian" macros="@non-gradable @an"/>
+  <entry word="Indian" pos="adjective"  stem="indian" macros="@non-gradable @an"/>
+  <entry word="Chinese" pos="adjective" stem="chinese"  macros="@non-gradable @a"/>
+  <entry word="Thai" pos="adjective" stem="thai"  macros="@non-gradable @a"/>
+  <entry word="Turkish" pos="adjective" stem="turkish"  macros="@non-gradable @a"/>
+  <entry word="cheap" pos="adjective" macros="@gradable @a"/>
+  <entry word="expensive" pos="adjective" macros="@gradable @an"/>
+  <entry word="inexpensive" pos="adjective" stem="cheap" macros="@gradable @an"/>
+  <entry word="funky" pos="adjective" macros="@gradable @a"/>
+  <entry word="groovy" pos="adjective" macros="@gradable @a"/>
+  <entry word="loud" pos="adjective" macros="@gradable @a"/>
+  <entry word="great" pos="adjective" macros="@gradable @a"/>
+  <entry word="good" pos="adjective" macros="@gradable @a"/>
+  <entry word="bad" pos="adjective" macros="@gradable @a"/>
+  <entry word="mediocre" pos="adjective" macros="@gradable @a"/>
+  <entry word="tacky" pos="adjective" macros="@gradable @a"/>
+  <entry word="best" pos="adjective" macros="@gradable"/>
+  <entry word="friendly" pos="adjective" macros="@gradable @a"/>
+  <entry word="plain" pos="adjective" macros="@gradable @a"/>
+
+  <!-- verbs -->
+  <entry word="rock" pos="intransitive-verb" stem="rock-verb" macros="@non-singular"/>
+  <entry word="rocks" pos="intransitive-verb" stem="rock-verb" macros="@singular"/>
+  <entry word="serve" pos="transitive-verb" stem="serve-verb" macros="@non-singular"/>
+  <entry word="serves" pos="transitive-verb" stem="serve-verb" macros="@singular"/>
+  <entry word="play" pos="transitive-verb" stem="play-verb" macros="@non-singular"/>
+  <entry word="plays" pos="transitive-verb" stem="play-verb" macros="@singular"/>
+  <entry word="have" pos="transitive-verb" stem="have-verb" macros="@non-singular"/>
+  <entry word="has" pos="transitive-verb" stem="have-verb" macros="@singular"/>
+
+
+  <entry word="is" pos="copula-verb" stem="be-verb" macros="@singular"/>
+  <entry word="are" pos="copula-verb" stem="be-verb" macros="@non-singular"/>
+
+  <!-- others -->
+  <entry word="and" pos="conjunction"/>
+
+  <entry word="very" pos="adverb"/>
+  <entry word="really" pos="adverb" stem="very"/>
+
+  <entry word="a" stem="indef-det" pos="determiner" macros="@a"/>
+  <entry word="an" stem="indef-det" pos="determiner" macros="@an"/>
+  <entry word="the" stem="def-det" pos="determiner"/>
+  <entry word="which" pos="relative-pronoun"/>
+
+  <entry word="while" pos="conjunction"/>
+  <entry word="but" pos="conjunction"/>
+  <entry word="however" pos="conjunction"/>
+  <entry stem="otoh" word="on_the_other_hand" pos="conjunction"/>
+
+
+  <!-- punctuation -->
+
+  <entry word="," pos="comma"/>
+  <entry word="." pos="fullstop"/>
+
+
+  <!-- macros -->
+  <macro name="@singular">
+    <fs id="1" attr="singular" val="yes"/>
+  </macro>
+  <macro name="@non-singular">
+    <fs id="1" attr="singular" val="no"/>
+  </macro>
+  <macro name="@singular-pron">
+    <fs id="1" attr="singular" val="yes"/>
+    <lf>
+      <satop nomvar="X">
+	<diamond mode="singular">
+	  <prop name="yes"/>
+	</diamond>
+      </satop>
+    </lf>
+  </macro>
+  <macro name="@non-singular-pron">
+    <fs id="1" attr="singular" val="no"/>
+    <lf>
+      <satop nomvar="X">
+	<diamond mode="singular">
+	  <prop name="no"/>
+	</diamond>
+      </satop>
+    </lf>
+  </macro>
+
+  <macro name="@an">
+    <fs id="1" attr="indefdet" val="an"/>
+  </macro>
+
+  <macro name="@a">
+    <fs id="1" attr="indefdet" val="a"/>
+  </macro>
+
+  <macro name="@non-gradable">
+    <fs id="1" attr="gradable" val="no"/>
+  </macro>
+  <macro name="@gradable">
+    <fs id="1" attr="gradable" val="yes"/>
+  </macro>
+
+</morph>

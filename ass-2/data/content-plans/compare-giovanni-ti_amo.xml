@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<speechplan>
+  <rstplan>
+    <relation name="contrast">
+      <proposition-pointer type="nucleus" idref="p1"/>
+      <proposition-pointer type="nucleus" idref="p2"/>
+    </relation>
+    <relation name="contrast">
+      <proposition-pointer type="nucleus" idref="p3"/>
+      <proposition-pointer type="nucleus" idref="p4"/>
+    </relation>
+    <relation name="contrast">
+      <proposition-pointer type="nucleus" idref="p5"/>
+      <proposition-pointer type="nucleus" idref="p6"/>
+    </relation>
+  </rstplan>
+  <proposition id="p1" dialogue_act="assert-com-cuisine" attr="cuisine" mod-word="italian">
+    <subject>
+      <restaurant name="Giovanni's"/>
+    </subject>
+  </proposition>
+  <proposition id="p2" dialogue_act="assert-com-cuisine" attr="cuisine" mod-word="italian">
+    <subject>
+      <restaurant name="Ti_Amo"/>
+    </subject>
+  </proposition>
+  <proposition id="p3" dialogue_act="assert-com-food_quality" attr="food" mod-word="good">
+    <subject>
+      <restaurant name="Giovanni's"/>
+    </subject>
+  </proposition>
+  <proposition id="p4" dialogue_act="assert-com-food_quality" attr="food" mod-word="mediocre">
+    <subject>
+      <restaurant name="Ti_Amo"/>
+    </subject>
+  </proposition>
+  <proposition id="p5" dialogue_act="assert-com-decor" attr="decor" mod-word="plain">
+    <subject>
+      <restaurant name="Giovanni's"/>
+    </subject>
+  </proposition>
+  <proposition id="p6" dialogue_act="assert-com-decor" attr="decor" mod-word="tacky">
+    <subject>
+      <restaurant name="Ti_Amo"/>
+    </subject>
+  </proposition>
+</speechplan>
