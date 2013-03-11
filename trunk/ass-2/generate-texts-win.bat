@@ -1,0 +1,1 @@
+java -classpath jars\match-generation.jar;jars\jdom.jar;jars\openccg.jar;jars\trove.jar uk/ac/ed/match/RunMatchGeneration %1
