@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ccg-lexicon name="assignment-1">
+
+  <family name="proper-noun" pos="proper-noun">
+    <entry name="Primary">
+      <atomcat type="NP">
+	<fs>
+	  <feat attr="index">
+	    <lf>
+	      <nomvar name="X"/>
+	    </lf>
+	  </feat>
+          <feat attr="singular" val="yes"/>
+	</fs>
+	<lf>
+	  <satop nomvar="X">
+	    <prop name="[*DEFAULT*]"/>
+	  </satop>
+	</lf>
+      </atomcat>
+    </entry>
+  </family>
+
+  <family name="common-noun" pos="common-noun">
+    <entry name="Primary">
+      <atomcat type="N">
+	<fs id="1">
+	  <feat attr="index">
+	    <lf>
+	      <nomvar name="X"/>
+	    </lf>
+	  </feat>
+
+	</fs>
+	<lf>   
+	  <satop nomvar="X">
+	    <prop name="[*DEFAULT*]"/>
+	  </satop>
+	</lf>
+      </atomcat>
+    </entry>
+  </family>
+
+  <family name="intransitive-verb" pos="intransitive-verb">
+    <entry name="Primary">
+      <complexcat>
+	<atomcat type="S">
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="E"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat>
+        <slash dir="\"/>
+        <atomcat type="NP">
+	  <fs id="1"> <!-- id attribute needed to get features from macros -->
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="X"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat>
+	<lf>
+	  <satop nomvar="E">
+	    <prop name="[*DEFAULT*]"/>
+	  </satop>
+	  <satop nomvar="E">
+	    <diamond mode="ARG1">
+	      <nomvar name="X"/>
+	    </diamond>
+	  </satop>    
+	</lf>
+      </complexcat>
+    </entry>
+  </family>
+
+  <family name="transitive-verb" pos="transitive-verb">
+    <entry name="Primary">
+      <complexcat>
+	<atomcat type="S">
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="E"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat>
+        <slash dir="\"/>
+        <atomcat type="NP">
+	  <fs id="1"> <!-- id attribute needed to get features from macros -->
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="X"/>
+	      </lf>
+	    </feat>
+	  </fs>	  
+	</atomcat>
+        <slash dir="/"/>
+        <atomcat type="NP">
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="Y"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat>
+	<lf>
+	  <satop nomvar="E">
+	    <prop name="[*DEFAULT*]"/>
+	  </satop>
+	  <satop nomvar="E">
+	    <diamond mode="ARG1">
+	      <nomvar name="X"/>
+	    </diamond>
+	  </satop>    
+	  <satop nomvar="E">
+	    <diamond mode="ARG2">
+	      <nomvar name="Y"/>
+	    </diamond>
+	  </satop> 
+	</lf>
+      </complexcat>
+    </entry>
+  </family>
+
+  <family name="adjective" pos="adjective">
+    <entry name="Primary">
+      <atomcat type="A">
+	<fs id="1"> <!-- THIS ID IS USEFUL FOR YOUR MACROS IN QUESTION 4 -->
+	  <feat attr="index">
+	    <lf>
+	      <nomvar name="P"/>
+	    </lf>
+	  </feat>
+	</fs>
+	<lf>
+	  <satop nomvar="P">
+	    <prop name="[*DEFAULT*]"/>
+	  </satop>
+	</lf>
+      </atomcat>
+    </entry>
+  </family>
+
+  <family name="conjunction" pos="conjunction"> 
+    <entry name="NP-conjunction"> 
+      <complexcat> 
+	<atomcat type="NP">
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="X"/>
+	      </lf>
+	    </feat>
+	    <feat attr="singular" val="no"/>
+	  </fs>
+	</atomcat>
+	<slash dir="\"/> 
+	<atomcat type="NP"> 
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="Y"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat> 
+	<slash dir="/"/> 
+	<atomcat type="NP"> 
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="Z"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat> 
+	<lf>
+	  <satop nomvar="X">
+	    <prop name="[*DEFAULT*]"/>
+	  </satop>
+	  <satop nomvar="X">
+	    <diamond mode="CONJ">
+	      <nomvar name="Y"/>
+	    </diamond>
+	  </satop>    
+	  <satop nomvar="X">
+	    <diamond mode="CONJ">
+	      <nomvar name="Z"/>
+	    </diamond>
+	  </satop>  
+	</lf>
+      </complexcat> 
+    </entry>
+    <entry name="S-conjunction"> <!-- QUESTION 1 -->
+      <complexcat> 
+	<atomcat type="S">
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="E"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat>
+	<slash dir="\"/> 
+	<atomcat type="S"> 
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="F"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat> 
+	<slash dir="/"/> 
+	<atomcat type="S"> 
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="G"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat> 
+	<lf>
+	  <satop nomvar="E">
+	    <prop name="[*DEFAULT*]"/>
+	  </satop>
+	  <satop nomvar="E">
+	    <diamond mode="CONJ">
+	      <nomvar name="F"/>
+	    </diamond>
+	  </satop>    
+	  <satop nomvar="E">
+	    <diamond mode="CONJ">
+	      <nomvar name="G"/>
+	    </diamond>
+	  </satop>  
+	</lf>
+      </complexcat> 
+    </entry>
+    <entry name="VP-conjunction"> <!-- QUESTION 2 -->
+      <complexcat> 
+	<atomcat type="S">
+	  <fs>
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="E"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat>
+	<slash dir="\"/> 
+	<atomcat type="NP">
+	  <fs id="1"/>
+	</atomcat>
+	<slash dir="\"/> 
+	<complexcat>
+	  <atomcat type="S">
+	    <fs>
+	      <feat attr="index">
+		<lf>
+		  <nomvar name="F"/>
+		</lf>
+	      </feat>
+	    </fs>
+	  </atomcat>
+	  <slash dir="\"/> 
+	  <atomcat type="NP">
+	    <fs id="1"/>
+	  </atomcat>
+	</complexcat>
+	<slash dir="/"/> 
+	<complexcat>
+	  <atomcat type="S">
+	    <fs>
+	      <feat attr="index">
+		<lf>
+		  <nomvar name="G"/>
+		</lf>
+	      </feat>
+	    </fs>
+	  </atomcat>
+	  <slash dir="\"/> 
+	  <atomcat type="NP">
+	    <fs id="1"/>
+	  </atomcat>
+	</complexcat>
+	<lf>
+	  <satop nomvar="E">
+	    <prop name="[*DEFAULT*]"/>
+	  </satop>
+	  <satop nomvar="E">
+	    <diamond mode="CONJ">
+	      <nomvar name="F"/>
+	    </diamond>
+	  </satop>    
+	  <satop nomvar="E">
+	    <diamond mode="CONJ">
+	      <nomvar name="G"/>
+	    </diamond>
+	  </satop>  
+	</lf>
+      </complexcat> 
+    </entry>
+  </family>
+ 
+  <family name="adverb" pos="adverb"> <!-- QUESTION 3 -->
+    <entry name="Intensifier"> 
+      <complexcat>
+	<atomcat type="A">
+	  <fs inheritsFrom="1"/>
+	</atomcat>
+	<slash dir="/"/> 
+	<atomcat type="A">
+	  <fs id="1">
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="P"/>
+	      </lf>
+	    </feat>
+	    <feat attr="gradable" val="yes"/> <!-- QUESTION 4 -->
+	  </fs>
+	</atomcat>
+	<lf>
+	  <satop nomvar="P">
+	    <diamond mode="MOD">
+	      <nomvar name="Q"/>
+	    </diamond>
+	  </satop>   
+	  <satop nomvar="Q">
+	    <prop name="[*DEFAULT*]"/>
+	  </satop>
+	</lf>
+      </complexcat>
+    </entry>
+  </family>
+
+  <!-- QUESTION 6 -->
+  <family name="determiner" pos="determiner" indexRel="*NoSem*" closed="true">
+    <entry name="Primary"> 
+      <complexcat>
+	<atomcat type="NP">
+	  <fs id="1"/>
+	</atomcat>
+	<slash dir="/"/> 
+	<atomcat type="N">
+	  <fs id="1">
+	    <feat attr="singular" val="yes"/>
+	  </fs>
+	</atomcat>
+      </complexcat>      
+    </entry>
+    <member stem="a"/>
+  </family>
+
+
+</ccg-lexicon>
