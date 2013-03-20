@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rules name="assignment-1">
+
+  <application dir="forward"/>
+  <application dir="backward"/>
+
+  <typechanging name="bare-NP">
+    <arg>
+      <atomcat type="N">
+        <fs id="1">
+          <feat attr="index">
+            <lf>
+              <nomvar name="X"/>
+            </lf>
+          </feat>
+	  <feat attr="singular" val="no"/>
+        </fs>
+      </atomcat>
+    </arg>
+    <result>
+      <atomcat type="NP">
+	<fs id="1"/>
+      </atomcat>
+    </result>
+  </typechanging>
+
+  <!-- QUESTION 5 -->
+
+  <typechanging name="adj-gradable">
+    <arg>
+      <atomcat type="A">
+        <fs>
+          <feat attr="index">
+            <lf>
+              <nomvar name="P"/>
+            </lf>
+          </feat>
+	  <feat attr="gradable" val="yes"/>
+        </fs>
+      </atomcat>
+    </arg>
+    <result>
+      <complexcat>
+	<atomcat type="N">
+	  <fs inheritsFrom="1"> <!-- using 'inheritsFrom' makes things a bit neater here -->
+	    <feat attr="gradable" val="yes"/>
+ 	  </fs>
+	</atomcat>
+        <slash dir="/"/>
+	<atomcat type="N">
+	  <fs id="1">
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="X"/>
+	      </lf>
+	    </feat>
+	  </fs>
+	</atomcat>
+	<lf>
+	  <satop nomvar="X">
+	    <diamond mode="MOD">
+	      <nomvar name="P"/>
+	    </diamond>
+	  </satop>    
+	</lf>
+      </complexcat>
+    </result>
+  </typechanging>
+
+  <typechanging name="adj-non-gradable">
+    <arg>
+      <atomcat type="A">
+        <fs>
+          <feat attr="index">
+            <lf>
+              <nomvar name="P"/>
+            </lf>
+          </feat>
+	  <feat attr="gradable" val="no"/>
+        </fs>
+      </atomcat>
+    </arg>
+    <result>
+      <complexcat>
+	<atomcat type="N">
+	  <fs id="1">
+	    <feat attr="index">
+	      <lf>
+		<nomvar name="X"/>
+	      </lf>
+	    </feat>
+	    <feat attr="gradable" val="no"/> <!-- this is the important bit -->
+ 	  </fs>
+	</atomcat>
+        <slash dir="/"/>
+	<atomcat type="N">
+	  <fs id="1"/>
+	</atomcat>
+	<lf>
+	  <satop nomvar="X">
+	    <diamond mode="MOD">
+	      <nomvar name="P"/>
+	    </diamond>
+	  </satop>    
+	</lf>
+      </complexcat>
+    </result>
+  </typechanging>
+
+</rules>

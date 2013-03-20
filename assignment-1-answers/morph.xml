@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<morph name="assignment-1">
+
+  <!-- restaurant names -->
+  <entry word="Giovanni's" pos="proper-noun"/>
+  <entry word="Dario's" pos="proper-noun"/>
+  <entry word="Kalpna" pos="proper-noun"/>
+  <entry word="Bangalore" pos="proper-noun"/>
+  <entry word="ChopChop" pos="proper-noun"/>
+  <entry word="Effi's" pos="proper-noun"/>
+  <entry word="Ayutthaya" pos="proper-noun"/>
+
+  <!-- common nouns -->
+  <entry word="food" pos="common-noun" macros="@non-singular"/>
+  <entry word="music" pos="common-noun" macros="@non-singular"/>
+  <entry word="decor" pos="common-noun" macros="@non-singular"/>
+
+  <!-- QUESTION 6 -->
+  <entry word="restaurant" pos="common-noun" macros="@singular"/>
+  <!-- QUESTION 7 -->
+  <entry word="restaurants" pos="common-noun" macros="@non-singular"/>
+
+  <!-- nationality adjectives -->
+  <entry word="Italian" pos="adjective" macros="@non-gradable"/>
+  <entry word="Indian" pos="adjective" macros="@non-gradable"/>
+  <entry word="Chinese" pos="adjective" macros="@non-gradable"/>
+  <entry word="Thai" pos="adjective" macros="@non-gradable"/>
+  <entry word="Turkish" pos="adjective" macros="@non-gradable"/>
+
+  <!-- gradable adjectives -->
+  <entry word="cheap" pos="adjective" macros="@gradable"/>
+  <entry word="expensive" pos="adjective" macros="@gradable"/>
+  <entry word="inexpensive" pos="adjective" stem="cheap" macros="@gradable"/>
+  <entry word="funky" pos="adjective" macros="@gradable"/>
+  <entry word="groovy" pos="adjective" macros="@gradable"/>
+  <entry word="loud" pos="adjective" macros="@gradable"/>
+  <entry word="great" pos="adjective" macros="@gradable"/>
+  <entry word="good" pos="adjective" macros="@gradable"/>
+  <entry word="bad" pos="adjective" macros="@gradable"/>
+
+  <!-- verbs -->
+  <entry word="rock" pos="intransitive-verb" macros="@non-singular"/>
+  <entry word="rocks" pos="intransitive-verb" stem="rock" macros="@singular"/>
+  <entry word="serve" pos="transitive-verb" macros="@non-singular"/>
+  <entry word="serves" pos="transitive-verb" stem="serve" macros="@singular"/>
+  <entry word="play" pos="transitive-verb" macros="@non-singular"/>
+  <entry word="plays" pos="transitive-verb" stem="play" macros="@singular"/>
+  <entry word="have" pos="transitive-verb" macros="@non-singular"/>
+  <entry word="has" pos="transitive-verb" stem="have" macros="@singular"/>
+  <entry word="is" pos="transitive-verb" stem="be" macros="@singular"/>
+  <entry word="are" pos="transitive-verb" stem="be" macros="@non-singular"/>
+
+  <!-- others -->
+  <entry word="and" pos="conjunction"/>
+
+  <!-- QUESTION 3  -->
+  <entry word="very" pos="adverb"/>
+  <entry word="really" pos="adverb" stem="very"/>
+
+  <!-- QUESTION 6 -->
+  <entry word="a" pos="determiner"/>
+
+  <!-- macros -->
+  <macro name="@singular">
+    <fs id="1" attr="singular" val="yes"/>
+  </macro>
+  <macro name="@non-singular">
+    <fs id="1" attr="singular" val="no"/>
+  </macro>
+
+  <!-- QUESTION 4 -->
+  <macro name="@gradable">
+    <fs id="1" attr="gradable" val="yes"/>
+  </macro>
+  <macro name="@non-gradable">
+    <fs id="1" attr="gradable" val="no"/>
+  </macro>
+
+
+</morph>

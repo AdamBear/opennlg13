@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+
+<regression>
+
+  <!-- At the start, the grammar should pass the following tests -->
+  <item numOfParses="1" string="Giovanni's rocks"/>
+  <item numOfParses="1" string="Giovanni's serves cheap Italian food"/>
+  <item numOfParses="1" string="Giovanni's serves cheap great food"/>
+  <item numOfParses="1" string="Giovanni's plays groovy music"/>
+  <item numOfParses="1" string="Giovanni's has great decor"/>
+  <item numOfParses="1" string="Giovanni's and Dario's rock"/>
+  <item numOfParses="1" string="Giovanni's and Dario's serve cheap Italian food"/>
+  <item numOfParses="0" string="Giovanni's rocks cheap Italian food"/>
+  <item numOfParses="0" string="Giovanni's serves"/>
+  <item numOfParses="0" string="Giovanni's rock"/>
+  <item numOfParses="0" string="Giovanni's serve cheap Italian food"/>
+  <item numOfParses="0" string="Giovanni's and Dario's rocks"/>
+  <item numOfParses="0" string="Giovanni's and Dario's serves cheap Italian food"/>
+
+  <!-- After question 1, your grammar should pass the following test -->
+  <item numOfParses="1" string="Giovanni's rocks and Dario's serves cheap food"/>
+
+  <!-- After question 2, your grammar should pass the following tests -->
+  <item numOfParses="1" string="Giovanni's rocks and serves cheap food"/>
+  <item numOfParses="1" string="Giovanni's and Dario's rock and serve cheap food"/>
+  <item numOfParses="0" string="Giovanni's rock and serves cheap food"/>
+  <item numOfParses="0" string="Giovanni's rocks and serve cheap food"/>
+  <item numOfParses="0" string="Giovanni's rock and serve cheap food"/>
+  <item numOfParses="0" string="Giovanni's and Dario's rocks and serves cheap food"/>
+  <item numOfParses="0" string="Giovanni's and Dario's rock and serves cheap food"/>
+  <item numOfParses="0" string="Giovanni's and Dario's rocks and serve cheap food"/>
+
+  <!-- After question 3, your grammar should pass the following tests -->
+  <item numOfParses="1" string="Giovanni's plays very funky music"/>
+  <item numOfParses="1" string="Giovanni's plays very very funky music"/>
+  <item numOfParses="1" string="Giovanni's serves really good Italian food"/>
+  <item numOfParses="0" string="Giovanni's serves very food"/>
+  <item numOfParses="0" string="Giovanni's serves expensive very food"/>
+
+  <!-- After question 4, your grammar should pass the following tests -->
+
+  <item numOfParses="0" string="Giovanni's serves very Italian food"/>
+  <item numOfParses="0" string="Giovanni's serves cheap really Italian food"/>
+
+  <!-- After question 5, your grammar should pass the following tests -->
+
+  <item numOfParses="1" string="Giovanni's serves good cheap food"/>
+  <item numOfParses="1" string="Giovanni's serves good Italian food"/>
+  <item numOfParses="1" string="Giovanni's serves good cheap Italian food"/>
+  <item numOfParses="0" string="Giovanni's serves Italian cheap food"/>
+  <item numOfParses="0" string="Giovanni's serves good Italian cheap food"/>
+  <item numOfParses="0" string="Giovanni's serves Italian good cheap food"/>
+
+  <!-- After question 6, your grammar should pass the following tests -->
+
+  <item numOfParses="1" string="Giovanni's is a restaurant"/>
+  <item numOfParses="1" string="Giovanni's is a cheap restaurant"/>
+  <item numOfParses="1" string="Ayutthaya is a Thai restaurant"/>
+  <item numOfParses="1" string="Dario's is a funky Italian restaurant"/>
+  <item numOfParses="0" string="Giovanni's is restaurant"/>
+  <item numOfParses="0" string="Giovanni's plays a music"/>
+  <item numOfParses="0" string="Giovanni's is cheap Italian restaurant"/>
+  <item numOfParses="0" string="Ayutthaya is a Thai funky restaurant"/>
+
+  <!-- After question 7, your grammar should pass the following tests -->
+
+  <item numOfParses="1" string="Giovanni's and Kalpna are restaurants"/>
+  <item numOfParses="0" string="Giovanni's and Kalpna is a restaurant"/>
+  <item numOfParses="0" string="Giovanni's are restaurants"/>
+
+</regression>
+
